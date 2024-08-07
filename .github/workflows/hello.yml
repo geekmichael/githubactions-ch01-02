@@ -1,5 +1,5 @@
 name: hello
-on: [push]
+on: push
 
 jobs:
     job1:
@@ -17,3 +17,4 @@ jobs:
             - name: Step one
               uses: actions/checkout@v2
             - name: Step two
+              run: "Get-ChildItem Env: | Sort-Object Name" 
