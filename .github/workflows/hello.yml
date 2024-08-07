@@ -7,20 +7,24 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Step one
-              uses: actions/checkout@v2
-            - name: Step two
-              run: env | sort
+              run: date
     job2:
         name: Second job
         runs-on: windows-latest
         steps:
             - name: Step one
-              uses: actions/checkout@v2
-            - name: Step two
-              run: "Get-ChildItem Env: | Sort-Object Name" 
+              run: Get-Date
     job3:
+        name: Third job
         needs: [job1, job2]
-        runs-on: ubuntu-latest
+        runs-on: macos-latest
         steps:
             - name: Step one
-              run: echo "Hello my job3"
+              run: date
+    job4:
+        name: Forth job
+        needs: [job1, job2, job3, job4]
+        runs-on: ubuntu-latest
+        steps: 
+            - name: get date
+              run: date
